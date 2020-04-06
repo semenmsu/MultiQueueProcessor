@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\test">
+      <UniqueIdentifier>{63936006-1f00-44ad-bfb5-0b6e3b2a606a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\sandbox">
+      <UniqueIdentifier>{d398439e-1314-4c30-9b54-aeaa0d848518}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\queues">
+      <UniqueIdentifier>{e3e4f3c3-1875-48ec-9902-e3ed62efd879}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="IConsumer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MutliQueueProcessor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Producer.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="IEnqueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Consumer.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="Sandbox.h">
+      <Filter>Header Files\sandbox</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsumersBag.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="ProducersBag.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiProducer.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiProducersBag.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="ISubscriber.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dispatcher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NaiveQueue.h">
+      <Filter>Header Files\queues</Filter>
+    </ClInclude>
+    <ClInclude Include="SyncQueue.h">
+      <Filter>Header Files\queues</Filter>
+    </ClInclude>
+    <ClInclude Include="EventQueue.h">
+      <Filter>Header Files\queues</Filter>
+    </ClInclude>
+    <ClInclude Include="BruteForceQueue.h">
+      <Filter>Header Files\queues</Filter>
+    </ClInclude>
+    <ClInclude Include="IPusher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="settings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadPrioritizer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomSubscribeConsumersBag.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomSubscribeUnsubscribeScenario.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleProducerConsumerScenario.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="ExtraManyProducerConsumerScenario.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomRemoveConsumersBag.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomRemoveConsumersScenario.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
