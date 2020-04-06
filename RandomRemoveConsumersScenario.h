@@ -3,7 +3,7 @@
 #include "BruteForceQueue.h"
 #include "NaiveQueue.h"
 #include "MultiQueueProcessor.h"
-#include "RandomSubscribeConsumersBag.h"
+#include "RandomRemoveConsumersBag.h"
 #include "ProducersBag.h"
 
 

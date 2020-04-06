@@ -15,8 +15,8 @@ RUN update-alternatives --config g++
 
 RUN apt-get install -y git
 
-RUN git clone https://github.com/semenmsu/MultiQueueProcessorMVS.git
-WORKDIR MutliQueueProcessorMVS
+RUN git clone https://github.com/semenmsu/MultiQueueProcessor.git
+WORKDIR MutltiQueueProcessorMVS
 RUN make
 RUN rm -rf result
 ADD ./entrypoint.sh /entrypoint.sh
