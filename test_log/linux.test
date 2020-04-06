@@ -1,0 +1,211 @@
+================================================================
+SimpleProducersConsumersScenario               
+SizeOfValue = 4                    
+
+    ******************** new scenario  producers=10  consumers=10 ******************** 
+    BruteForceQueue
+    approximately rec messages    : 200951 / sec
+    approximately all messages    : 200952 / sec
+    approximately errors          : 0 / sec
+    approximately errors total    : 1
+    ******************** new scenario  producers=10  consumers=10 ******************** 
+    NaiveQueue
+    approximately rec messages    : 201853 / sec
+    approximately all messages    : 201856 / sec
+    approximately errors          : 2 / sec
+    approximately errors total    : 6
+    ******************** new scenario  producers=10  consumers=10 ******************** 
+    EventQueue
+    approximately rec messages    : 217420 / sec
+    approximately all messages    : 217422 / sec
+    approximately errors          : 2 / sec
+    approximately errors total    : 6
+
+
+    ******************** new scenario  producers=15  consumers=15 ******************** 
+    BruteForceQueue
+    approximately rec messages    : 339675 / sec
+    approximately all messages    : 339680 / sec
+    approximately errors          : 2 / sec
+    approximately errors total    : 6
+    ******************** new scenario  producers=15  consumers=15 ******************** 
+    NaiveQueue
+    approximately rec messages    : 336713 / sec
+    approximately all messages    : 336716 / sec
+    approximately errors          : 2 / sec
+    approximately errors total    : 7
+    ******************** new scenario  producers=15  consumers=15 ******************** 
+    EventQueue
+    approximately rec messages    : 338768 / sec
+    approximately all messages    : 338768 / sec
+    approximately errors          : 1 / sec
+    approximately errors total    : 3
+
+
+    ******************** new scenario  producers=20  consumers=20 ******************** 
+    BruteForceQueue
+    approximately rec messages    : 489334 / sec
+    approximately all messages    : 489341 / sec
+    approximately errors          : 2 / sec
+    approximately errors total    : 8
+    ******************** new scenario  producers=20  consumers=20 ******************** 
+    NaiveQueue
+    approximately rec messages    : 500596 / sec
+    approximately all messages    : 500605 / sec
+    approximately errors          : 3 / sec
+    approximately errors total    : 10
+    ******************** new scenario  producers=20  consumers=20 ******************** 
+    EventQueue
+    approximately rec messages    : 451778 / sec
+    approximately all messages    : 451781 / sec
+    approximately errors          : 1 / sec
+    approximately errors total    : 5
+
+
+================================================================
+
+================================================================
+SimpleProducersConsumersScenario               
+SizeOfValue = 64                    
+
+    ******************** new scenario  producers=10  consumers=10 ******************** 
+    BruteForceQueue
+    approximately rec messages    : 217454 / sec
+    approximately all messages    : 217455 / sec
+    approximately errors          : 1 / sec
+    approximately errors total    : 4
+    ******************** new scenario  producers=10  consumers=10 ******************** 
+    NaiveQueue
+    approximately rec messages    : 195114 / sec
+    approximately all messages    : 195118 / sec
+    approximately errors          : 2 / sec
+    approximately errors total    : 6
+    ******************** new scenario  producers=10  consumers=10 ******************** 
+    EventQueue
+    approximately rec messages    : 223851 / sec
+    approximately all messages    : 223853 / sec
+    approximately errors          : 2 / sec
+    approximately errors total    : 6
+
+
+    ******************** new scenario  producers=15  consumers=15 ******************** 
+    BruteForceQueue
+    approximately rec messages    : 340642 / sec
+    approximately all messages    : 340649 / sec
+    approximately errors          : 3 / sec
+    approximately errors total    : 10
+    ******************** new scenario  producers=15  consumers=15 ******************** 
+    NaiveQueue
+    approximately rec messages    : 353192 / sec
+    approximately all messages    : 353199 / sec
+    approximately errors          : 2 / sec
+    approximately errors total    : 8
+    ******************** new scenario  producers=15  consumers=15 ******************** 
+    EventQueue
+    approximately rec messages    : 340942 / sec
+    approximately all messages    : 340951 / sec
+    approximately errors          : 3 / sec
+    approximately errors total    : 10
+
+
+    ******************** new scenario  producers=20  consumers=20 ******************** 
+    BruteForceQueue
+    approximately rec messages    : 485861 / sec
+    approximately all messages    : 485871 / sec
+    approximately errors          : 4 / sec
+    approximately errors total    : 12
+    ******************** new scenario  producers=20  consumers=20 ******************** 
+    NaiveQueue
+    approximately rec messages    : 497795 / sec
+    approximately all messages    : 497795 / sec
+    approximately errors          : 0 / sec
+    approximately errors total    : 0
+    ******************** new scenario  producers=20  consumers=20 ******************** 
+    EventQueue
+    approximately rec messages    : 500883 / sec
+    approximately all messages    : 500897 / sec
+    approximately errors          : 4 / sec
+    approximately errors total    : 12
+
+
+================================================================
+
+================================================================
+ExtraManyProducersConsumersScenario               
+SizeOfValue = 4                    
+
+    ******************** new scenario  num_threads=150  producers_in_thread=10 ******************** 
+    BruteForceQueue
+    approximately rec messages    : 2173010 / sec
+    approximately all messages    : 2173326 / sec
+    approximately errors          : 108 / sec
+    approximately errors total    : 324
+
+    ******************** new scenario  num_threads=150  producers_in_thread=10 ******************** 
+    NaiveQueue
+    approximately rec messages    : 2736018 / sec
+    approximately all messages    : 2765275 / sec
+    approximately errors          : 428 / sec
+    approximately errors total    : 1284
+
+    ******************** new scenario  num_threads=150  producers_in_thread=10 ******************** 
+    EventQueue
+    approximately rec messages    : 3544221 / sec
+    approximately all messages    : 3755016 / sec
+    approximately errors          : 1275 / sec
+    approximately errors total    : 3826
+
+================================================================
+
+
+================================================================
+ExtraManyProducersConsumersScenario               
+SizeOfValue = 64                    
+
+    ******************** new scenario  num_threads=150  producers_in_thread=10 ******************** 
+    BruteForceQueue
+    approximately rec messages    : 2097824 / sec
+    approximately all messages    : 2098315 / sec
+    approximately errors          : 57 / sec
+    approximately errors total    : 172
+
+    ******************** new scenario  num_threads=150  producers_in_thread=10 ******************** 
+    NaiveQueue
+    approximately rec messages    : 2438008 / sec
+    approximately all messages    : 2468368 / sec
+    approximately errors          : 551 / sec
+    approximately errors total    : 1653
+
+    ******************** new scenario  num_threads=150  producers_in_thread=10 ******************** 
+    EventQueue
+    approximately rec messages    : 2845360 / sec
+    approximately all messages    : 4183726 / sec
+    approximately errors          : 2629 / sec
+    approximately errors total    : 7888
+
+================================================================
+
+
+================================================================
+RandomSubscribeUnsusbscribeScenario               
+Number Producers And Consumers 100
+SizeOfValue = 4                    
+
+    approximately rec messages    : 269251 / sec
+    approximately all messages    : 577123 / sec
+    approximately errors          : 55 / sec
+    approximately errors total    : 166
+================================================================
+
+================================================================
+RandomSubscribeUnsusbscribeScenario               
+Number Producers And Consumers 100
+SizeOfValue = 4                    
+
+Total Removes: 885
+    approximately rec messages    : 68247 / sec
+    approximately all messages    : 731513 / sec
+    approximately errors          : 33 / sec
+    approximately errors total    : 99
+================================================================
+
