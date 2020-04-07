@@ -162,7 +162,7 @@
     <ClInclude Include="ISubscriber.h" />
     <ClInclude Include="MultiProducer.h" />
     <ClInclude Include="MultiProducersBag.h" />
-    <ClInclude Include="MutliQueueProcessor.h" />
+    <ClInclude Include="MultiQueueProcessor.h" />
     <ClInclude Include="EventQueue.h" />
     <ClInclude Include="NaiveQueue.h" />
     <ClInclude Include="Producer.h" />

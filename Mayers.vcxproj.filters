@@ -27,9 +27,6 @@
     <ClInclude Include="IConsumer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MutliQueueProcessor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Producer.h">
       <Filter>Header Files\test</Filter>
     </ClInclude>
@@ -101,6 +98,9 @@
     </ClInclude>
     <ClInclude Include="RandomRemoveConsumersScenario.h">
       <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiQueueProcessor.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
