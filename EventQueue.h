@@ -78,7 +78,7 @@ private:
 	std::unordered_set<Key> set_;
 };
 
-template <typename Key, typename Value>
+template <typename Key, typename Value, class BaseQueue = SyncQueue<Key, Value>>
 class EventQueue
 {
 public:
@@ -105,7 +105,8 @@ public:
 		}
 		else
 		{
-			auto ptr = new SyncQueue<Key, Value>(id);
+			//auto ptr = new SyncQueue<Key, Value>(id);
+			auto ptr = new BaseQueue(id);
 			ptr->SetNotifier(notifier_);
 			globalQueueTable_.emplace(id, ptr);
 			auto insert = ptr->GetInserter();
@@ -185,7 +186,7 @@ public:
 	}
 
 private:
-	std::unordered_map<Key, SyncQueue<Key, Value> *> globalQueueTable_;
+	std::unordered_map<Key, BaseQueue *> globalQueueTable_;
 	std::unordered_map<Key, std::function<void(Value &value)>> inserts_;
 	std::unordered_map<Key, std::function<void(Value &value, int &extracted)>> extractors_;
 	//std::unordered_map<Key, std::function<int(void)>> size_getters_;

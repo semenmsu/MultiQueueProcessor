@@ -5,6 +5,7 @@
 #include "EventQueue.h"
 #include "BruteForceQueue.h"
 #include "NaiveQueue.h"
+#include "LockFreeQueue.h"
 
 template <typename Value, typename Queue>
 int ExtraManyProducersTest(int num_threads, int num_producers, std::string queue_name)
@@ -25,22 +26,22 @@ int ExtraManyProducersTest(int num_threads, int num_producers, std::string queue
 	return 0;
 }
 
-
-
 template <typename Value>
 void ExtraManyProducersConsumersScenario(int num_threads, int num_producers)
 {
 	std::cout << "================================================================" << std::endl;
 	std::cout << "ExtraManyProducersConsumersScenario               " << std::endl;
 	std::cout << "SizeOfValue = " << sizeof(Value) << "                    " << std::endl
-		<< std::endl;
+			  << std::endl;
 	ExtraManyProducersTest<Value, BruteForceQueue<int32_t, Value>>(num_threads, num_producers, "BruteForceQueue");
-	Wait(NUM_SECS);
+	Wait(2);
 	ExtraManyProducersTest<Value, NaiveQueue<int32_t, Value>>(num_threads, num_producers, "NaiveQueue");
-	Wait(NUM_SECS);
+	Wait(2);
 	ExtraManyProducersTest<Value, EventQueue<int32_t, Value>>(num_threads, num_producers, "EventQueue");
-	Wait(NUM_SECS);
+	Wait(2);
+	ExtraManyProducersTest<Value, EventQueue<int32_t, Value, LockFreeQueue<int32_t, Value>>>(num_threads, num_threads, "EventQueueLockFree");
+	Wait(2);
 	std::cout << "================================================================" << std::endl
-		<< std::endl << std::endl;
+			  << std::endl
+			  << std::endl;
 }
-
