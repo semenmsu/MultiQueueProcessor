@@ -160,6 +160,7 @@
     <ClInclude Include="IEnqueue.h" />
     <ClInclude Include="IPusher.h" />
     <ClInclude Include="ISubscriber.h" />
+    <ClInclude Include="LockFreeQueue.h" />
     <ClInclude Include="MultiProducer.h" />
     <ClInclude Include="MultiProducersBag.h" />
     <ClInclude Include="MultiQueueProcessor.h" />

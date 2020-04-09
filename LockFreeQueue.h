@@ -33,10 +33,9 @@ public:
             insert_position_ %= MaxCapacity;
             if (free_[insert_position_])
             {
-                values_[insert_position_] = value;
-                free_[insert_position_] = false;
+                values_[insert_position_] = value, free_[insert_position_] = false, insert_position_++;
                 notifier_(id_);
-                insert_position_++;
+                
             }
         };
         return lambda;
@@ -48,9 +47,7 @@ public:
             extract_position_ %= MaxCapacity;
             if (!free_[extract_position_])
             {
-                value = values_[extract_position_];
-                free_[extract_position_] = true;
-                extract_position_++;
+                value = values_[extract_position_], free_[extract_position_] = true, extract_position_++;
                 extracted = true;
                 return;
             }
