@@ -15,7 +15,7 @@
 //?? std::enable_shared_from_this
 //class SyncQueue: std::enable_shared_from_this<SyncQueue<Key, Value>> {
 template <typename Key, typename Value>
-class LockFreeQueue
+class LockFreeQueue //problem with thread data reordering? can't guarantee consistent data change, cache problem?(
 {
 public:
     using ExtractorType = std::shared_ptr<std::function<void(Value &value, int &extracted)>>;
@@ -31,9 +31,11 @@ public:
     {
         auto lambda = [this](Value &value) {
             insert_position_ %= QUEUE_MAX_CAPACITY;
+            std::unique_lock<std::mutex> lock(mtx_);
             if (free_[insert_position_])
             {
                 values_[insert_position_] = value, free_[insert_position_] = false, insert_position_++; //redo ...
+                lock.unlock();
                 notifier_(id_);
                 
             }
@@ -45,6 +47,7 @@ public:
     {
         auto lambda = [this](Value &value, int &extracted) {
             extract_position_ %= QUEUE_MAX_CAPACITY;
+            std::lock_guard<std::mutex> lock(mtx_);
             if (!free_[extract_position_])
             {
                 value = values_[extract_position_], free_[extract_position_] = true, extract_position_++; //redo ....
@@ -80,5 +83,6 @@ private:
     std::vector<bool> free_;
     std::vector<Value> values_;
     std::function<void(Key id)> notifier_{nullptr};
+    std::mutex mtx_;
     Key id_;
 };
