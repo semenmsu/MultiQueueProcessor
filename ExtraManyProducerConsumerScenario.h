@@ -39,7 +39,7 @@ void ExtraManyProducersConsumersScenario(int num_threads, int num_producers)
 	Wait(2);
 	ExtraManyProducersTest<Value, EventQueue<int32_t, Value>>(num_threads, num_producers, "EventQueue");
 	Wait(2);
-	ExtraManyProducersTest<Value, EventQueue<int32_t, Value, LockFreeQueue<int32_t, Value>>>(num_threads, num_threads, "EventQueueLockFree");
+	ExtraManyProducersTest<Value, EventQueue<int32_t, Value, LockFreeQueue<int32_t, Value>>>(num_threads, num_producers, "EventQueueLockFree");
 	Wait(2);
 	std::cout << "================================================================" << std::endl
 			  << std::endl
