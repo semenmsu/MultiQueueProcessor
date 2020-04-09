@@ -22,7 +22,7 @@
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{1DD1DAE2-21B0-4D41-93D4-8CA0E554A219}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Mayers</RootNamespace>
+    <RootNamespace>MultiQueueProcessor</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>MultiQueueProcessor</ProjectName>
   </PropertyGroup>
