@@ -1,6 +1,6 @@
 #pragma once
 //#define MaxCapacity 100
-#define QUEUE_MAX_CAPACITY 100
+#define QUEUE_MAX_CAPACITY 50
 #define QUEUE_PERSIST false
 #define NUM_SECS 3
 //#define LINUX

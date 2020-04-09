@@ -34,7 +34,7 @@ public:
 			}
 			else {
 				dwThreadPri = GetThreadPriority(GetCurrentThread());
-				_tprintf(TEXT("Current thread priority is 0x%x\n"), dwThreadPri);
+				//_tprintf(TEXT("Current thread priority is 0x%x\n"), dwThreadPri);
 			}
 		}
 #endif // WINDOWS_OS

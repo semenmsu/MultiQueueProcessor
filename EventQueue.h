@@ -128,44 +128,32 @@ public:
 #define MAX_PREFETCH_KEYS 200
 	void Poll(IPusher<Key, Value> &manager)
 	{
-		bool repeat = true;
-		while (repeat)
+		std::unordered_set<Key> ids;
+		notifyQueue_.Swap(ids);
 		{
-			//std::unordered_set<Key> ids;
-			repeat = false;
-			//std::vector<Key> ids;
-			//ids.reserve(MAX_PREFETCH_KEYS);
-			//notifyQueue_.CopyPartly(ids, MAX_PREFETCH_KEYS);
-			//if (ids.size() == MAX_PREFETCH_KEYS)
-			//{
-			//	repeat = true;
-			//}
-			std::unordered_set<Key> ids;
-			notifyQueue_.Swap(ids);
+			std::unique_lock<std::mutex> lock(mtx_);
+			for (auto& id : ids)
 			{
-				std::unique_lock<std::mutex> lock(mtx_);
-				for (auto &id : ids)
-				{
-					auto iter = extractors_.find(id);
-					if (iter != extractors_.end())
-					{
-						while (true)
-						{
-							int32_t extracted = 0;
-							Value extracted_value{};
-							iter->second(extracted_value, extracted);
 
-							if (!extracted)
-							{
-								break;
-							}
-							manager.TryPush(id, extracted_value);
+				auto iter = extractors_.find(id);
+				if (iter != extractors_.end())
+				{
+					while (true)
+					{
+						int32_t extracted = 0;
+						Value extracted_value{};
+						iter->second(extracted_value, extracted);
+
+						if (!extracted)
+						{
+							break;
 						}
+						manager.TryPush(id, extracted_value);
 					}
 				}
 			}
 		}
-
+		
 		{
 			std::unique_lock<std::mutex> lock(mtx2_);
 			cv_.wait_for(lock, 1ms, [this]() {

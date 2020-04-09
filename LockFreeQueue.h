@@ -33,7 +33,7 @@ public:
             insert_position_ %= QUEUE_MAX_CAPACITY;
             if (free_[insert_position_])
             {
-                values_[insert_position_] = value, free_[insert_position_] = false, insert_position_++;
+                values_[insert_position_] = value, free_[insert_position_] = false, insert_position_++; //redo ...
                 notifier_(id_);
                 
             }
@@ -47,7 +47,7 @@ public:
             extract_position_ %= QUEUE_MAX_CAPACITY;
             if (!free_[extract_position_])
             {
-                value = values_[extract_position_], free_[extract_position_] = true, extract_position_++;
+                value = values_[extract_position_], free_[extract_position_] = true, extract_position_++; //redo ....
                 extracted = true;
                 return;
             }
