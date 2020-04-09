@@ -12,6 +12,7 @@ int main()
 	SimpleProducersConsumersScenario<int32_t>(10, 20, 5);
 	SimpleProducersConsumersScenario<Value64>(10, 20, 5);
 	ExtraManyProducersConsumersScenario<int32_t>(150, 10);
+	ExtraManyProducersConsumersScenario<int32_t>(400, 100);
 	ExtraManyProducersConsumersScenario<Value64>(150, 10);
 	RandomSubscribeUnsusbscribeScenario<int32_t>(100, 100);
 	RandomRemoveConsumersScenario<int32_t>(100, 1'000);
