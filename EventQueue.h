@@ -45,6 +45,12 @@ public:
 		}
 	}
 
+	void Swap(std::unordered_set<Key> &to)
+	{
+		std::lock_guard<std::mutex> lock(mtx_);
+		set_.swap(to);
+	}
+
 	void Dequeue(Key &value, int &extracted)
 	{
 		std::lock_guard<std::mutex> lock(mtx_);
@@ -106,7 +112,7 @@ public:
 			inserts_.emplace(id, insert);
 			auto extractor = ptr->GetExtractor();
 			extractors_.emplace(id, extractor);
-			lock.unlock(); 
+			lock.unlock();
 			insert(value);
 		}
 	}
@@ -126,13 +132,15 @@ public:
 		{
 			//std::unordered_set<Key> ids;
 			repeat = false;
-			std::vector<Key> ids;
-			ids.reserve(MAX_PREFETCH_KEYS);
-			notifyQueue_.CopyPartly(ids, MAX_PREFETCH_KEYS);
-			if (ids.size() == MAX_PREFETCH_KEYS)
-			{
-				repeat = true;
-			}
+			//std::vector<Key> ids;
+			//ids.reserve(MAX_PREFETCH_KEYS);
+			//notifyQueue_.CopyPartly(ids, MAX_PREFETCH_KEYS);
+			//if (ids.size() == MAX_PREFETCH_KEYS)
+			//{
+			//	repeat = true;
+			//}
+			std::unordered_set<Key> ids;
+			notifyQueue_.Swap(ids);
 			{
 				std::unique_lock<std::mutex> lock(mtx_);
 				for (auto &id : ids)
@@ -175,6 +183,7 @@ public:
 		std::cout << "EventQueue Destructor Call " << std::endl;
 #endif // DEBUG
 	}
+
 private:
 	std::unordered_map<Key, SyncQueue<Key, Value> *> globalQueueTable_;
 	std::unordered_map<Key, std::function<void(Value &value)>> inserts_;
