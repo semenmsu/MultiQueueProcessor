@@ -20,8 +20,11 @@ class LockFreeQueue //problem with thread data reordering? can't guarantee consi
 public:
     using ExtractorType = std::shared_ptr<std::function<void(Value &value, int &extracted)>>;
 
-    LockFreeQueue(Key id) : id_(id), free_(QUEUE_MAX_CAPACITY, true), values_(QUEUE_MAX_CAPACITY)
+    LockFreeQueue(Key id) : id_(id), free_(QUEUE_MAX_CAPACITY), values_(QUEUE_MAX_CAPACITY)
     {
+        for (int i = 0; i < QUEUE_MAX_CAPACITY; i++) {
+            free_[i] = std::make_pair(std::make_unique<std::mutex>(), true);
+        }
 #ifdef DEBUG
         std::cout << "Create new LockFreeQueue with id " << id << std::endl;
 #endif // DEBUG
@@ -31,11 +34,13 @@ public:
     {
         auto lambda = [this](Value &value) {
             insert_position_ %= QUEUE_MAX_CAPACITY;
-            std::unique_lock<std::mutex> lock(mtx_);
-            if (free_[insert_position_])
+            //std::lock_guard<std::mutex> lock(mtx_);
+            std::unique_lock<std::mutex> lock(*free_[insert_position_].first);
+            if (free_[insert_position_].second)
             {
-                values_[insert_position_] = value, free_[insert_position_] = false, insert_position_++; //redo ...
+                values_[insert_position_] = value, free_[insert_position_].second = false, insert_position_++; //redo ...
                 lock.unlock();
+                //std::cout << "notify" << std::endl;
                 notifier_(id_);
                 
             }
@@ -47,10 +52,11 @@ public:
     {
         auto lambda = [this](Value &value, int &extracted) {
             extract_position_ %= QUEUE_MAX_CAPACITY;
-            std::lock_guard<std::mutex> lock(mtx_);
-            if (!free_[extract_position_])
+            //std::lock_guard<std::mutex> lock(mtx_);
+            std::unique_lock<std::mutex> lock(*free_[extract_position_].first);
+            if (!free_[extract_position_].second)
             {
-                value = values_[extract_position_], free_[extract_position_] = true, extract_position_++; //redo ....
+                value = values_[extract_position_], free_[extract_position_].second = true, extract_position_++; //redo ....
                 extracted = true;
                 return;
             }
@@ -80,7 +86,7 @@ public:
 private:
     uint32_t insert_position_{0};
     uint32_t extract_position_{0};
-    std::vector<bool> free_;
+    std::vector <std::pair<std::unique_ptr<std::mutex>, bool>> free_;
     std::vector<Value> values_;
     std::function<void(Key id)> notifier_{nullptr};
     std::mutex mtx_;
