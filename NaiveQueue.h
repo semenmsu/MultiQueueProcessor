@@ -29,7 +29,7 @@ public:
             auto iter = queues_.find(id);
             if (iter != queues_.end())
             {
-                if (iter->second.size() < MaxCapacity)
+                if (iter->second.size() < QUEUE_MAX_CAPACITY)
                 {
                     iter->second.push(value);
                     notify_queue_.push(id);
@@ -42,7 +42,7 @@ public:
                 iter = queues_.find(id);
                 if (iter != queues_.end())
                 {
-                    if (iter->second.size() < MaxCapacity)
+                    if (iter->second.size() < QUEUE_MAX_CAPACITY)
                     {
                         iter->second.push(value);
                         notify_queue_.push(id);
@@ -118,7 +118,7 @@ public:
             //waiting_queues_.size();
         }
 
-        if constexpr (Persist)
+        if constexpr (QUEUE_PERSIST)
         {
             PersistRoutine(manager);
         }
@@ -135,7 +135,7 @@ public:
                 if (iter->second.size())
                 {
                     auto front = iter->second.front();
-                    if constexpr (!Persist)
+                    if constexpr (!QUEUE_PERSIST)
                     {
                         iter->second.pop();
                         //lock.unlock();

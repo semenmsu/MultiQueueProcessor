@@ -5,6 +5,11 @@
 #ifdef LINUX
 #include <pthread.h>
 #endif // LINUX
+#ifdef WINDOWS_OS
+#include <windows.h>
+#include <tchar.h>
+#endif // WINDOWS_OS
+
 
 class ThreadPrioritizer
 {
@@ -20,6 +25,20 @@ public:
 		max_prio_for_policy = sched_get_priority_max(policy);
 		pthread_setschedprio(thId, max_prio_for_policy);
 #endif // Linux
+
+#ifdef WINDOWS_OS
+		DWORD dwError, dwThreadPri;
+		if (priority_ == HIGH_PRIORITY) {
+			if (!SetPriorityClass(GetCurrentProcess(), REALTIME_PRIORITY_CLASS)) {
+				_tprintf(TEXT("Failed to end REALTIME_PRIORITY_CLASS mode (%d)\n"), GetLastError());
+			}
+			else {
+				dwThreadPri = GetThreadPriority(GetCurrentThread());
+				_tprintf(TEXT("Current thread priority is 0x%x\n"), dwThreadPri);
+			}
+		}
+#endif // WINDOWS_OS
+
 
 		/**/
 	}
@@ -39,3 +58,5 @@ private:
 
 	int32_t priority_;
 };
+
+

@@ -31,7 +31,7 @@ public:
         auto iter = queues_.find(id);
         if (iter != queues_.end())
         {
-            if (iter->second.size() < MaxCapacity)
+            if (iter->second.size() < QUEUE_MAX_CAPACITY)
             {
                 iter->second.push(value);
                 size_++;
@@ -43,7 +43,7 @@ public:
             iter = queues_.find(id);
             if (iter != queues_.end())
             {
-                if (iter->second.size() < MaxCapacity)
+                if (iter->second.size() < QUEUE_MAX_CAPACITY)
                 {
                     iter->second.push(value);
                     size_++;

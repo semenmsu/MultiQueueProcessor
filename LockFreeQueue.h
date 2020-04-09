@@ -20,7 +20,7 @@ class LockFreeQueue
 public:
     using ExtractorType = std::shared_ptr<std::function<void(Value &value, int &extracted)>>;
 
-    LockFreeQueue(Key id) : id_(id), free_(MaxCapacity, true), values_(MaxCapacity)
+    LockFreeQueue(Key id) : id_(id), free_(QUEUE_MAX_CAPACITY, true), values_(QUEUE_MAX_CAPACITY)
     {
 #ifdef DEBUG
         std::cout << "Create new LockFreeQueue with id " << id << std::endl;
@@ -30,7 +30,7 @@ public:
     std::function<void(Value &value)> GetInserter()
     {
         auto lambda = [this](Value &value) {
-            insert_position_ %= MaxCapacity;
+            insert_position_ %= QUEUE_MAX_CAPACITY;
             if (free_[insert_position_])
             {
                 values_[insert_position_] = value, free_[insert_position_] = false, insert_position_++;
@@ -44,7 +44,7 @@ public:
     std::function<void(Value &value, int &extracted)> GetExtractor()
     {
         auto lambda = [this](Value &value, int &extracted) {
-            extract_position_ %= MaxCapacity;
+            extract_position_ %= QUEUE_MAX_CAPACITY;
             if (!free_[extract_position_])
             {
                 value = values_[extract_position_], free_[extract_position_] = true, extract_position_++;

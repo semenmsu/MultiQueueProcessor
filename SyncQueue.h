@@ -34,7 +34,7 @@ public:
 		//auto self = std::enable_shared_from_this<SyncQueue<Key, Value>>::shared_from_this();
 		auto lambda = [this](Value &value) {
 			std::unique_lock<std::mutex> lock(mtx_);
-			if (queue_.size() < MaxCapacity)
+			if (queue_.size() < QUEUE_MAX_CAPACITY)
 			{
 				queue_.push(value);
 				lock.unlock();

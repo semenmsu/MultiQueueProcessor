@@ -16,11 +16,11 @@
     <Filter Include="Header Files\test">
       <UniqueIdentifier>{63936006-1f00-44ad-bfb5-0b6e3b2a606a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\sandbox">
-      <UniqueIdentifier>{d398439e-1314-4c30-9b54-aeaa0d848518}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\queues">
       <UniqueIdentifier>{e3e4f3c3-1875-48ec-9902-e3ed62efd879}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\wiki">
+      <UniqueIdentifier>{d398439e-1314-4c30-9b54-aeaa0d848518}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -38,9 +38,6 @@
     </ClInclude>
     <ClInclude Include="Consumer.h">
       <Filter>Header Files\test</Filter>
-    </ClInclude>
-    <ClInclude Include="Sandbox.h">
-      <Filter>Header Files\sandbox</Filter>
     </ClInclude>
     <ClInclude Include="ConsumersBag.h">
       <Filter>Header Files\test</Filter>
@@ -109,6 +106,9 @@
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="examples.cpp">
+      <Filter>Header Files\wiki</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

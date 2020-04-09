@@ -148,6 +148,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="examples.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -172,7 +173,6 @@
     <ClInclude Include="RandomRemoveConsumersScenario.h" />
     <ClInclude Include="RandomSubscribeConsumersBag.h" />
     <ClInclude Include="RandomSubscribeUnsubscribeScenario.h" />
-    <ClInclude Include="Sandbox.h" />
     <ClInclude Include="settings.h" />
     <ClInclude Include="SimpleProducerConsumerScenario.h" />
     <ClInclude Include="SyncQueue.h" />
